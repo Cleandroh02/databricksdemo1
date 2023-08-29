@@ -4,6 +4,13 @@ spark = SparkSession.builder.appName("MlModel").getOrCreate()
 
 # COMMAND ----------
 
+# MAGIC %run "./DataCreator"
+# MAGIC
+# MAGIC %run "./DataCleaning"
+# MAGIC
+
+# COMMAND ----------
+
 from pyspark.ml.feature import VectorAssembler
 from pyspark.ml.classification import RandomForestClassifier
 from pyspark.ml import Pipeline
