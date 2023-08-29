@@ -1,7 +1,7 @@
 name: databricks-cicd
 on:
     push:
-      branches: ["fea*"]
+      branches: ["fea*", "dev", "main"]
     pull_request:
         branches: ["main", "dev"]
 
