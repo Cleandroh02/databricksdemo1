@@ -1,5 +1,4 @@
 # Databricks notebook source
-
 from pyspark.sql import SparkSession
 
 
@@ -16,11 +15,11 @@ spark = SparkSession.builder.appName("ETLDemo").getOrCreate()
 
 
 # Simulate data with null values
-num_rows = 10000
+num_rows = 1000
 simulated_data_with_nulls_df = simulate_data_with_nulls(num_rows)
 
 
-display(simulated_data_with_nulls_df)
+#display(simulated_data_with_nulls_df)
 
 
 # COMMAND ----------
