@@ -49,11 +49,11 @@ jobs:
         env:
           DATABRICKS_HOST: ${{ vars.DATABRICKS_HOST }}
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
-          REPO_PATH: ${{ inputs.databricksRepoPath }}
-          BRANCH: ${{ inputs.branch }}
+          
         run: |
-          echo "!!!!!BRANCH NEW WAY!!!!!!!!!!!!!!!!: $BRANCH"
           databricks repos update /Repos/cesar.higuita@dataknow.co/databricksdemo1 --branch ${{ steps.branch_name.outputs.branch_name }}
+
+          echo "The branch: ${{ steps.branch_name.outputs.branch_name }} was updated sucessfully"
           
           
 
