@@ -54,6 +54,16 @@ jobs:
           databricks repos update /Repos/cesar.higuita@dataknow.co/databricksdemo1 --branch ${{ steps.branch_name.outputs.branch_name }}
 
           echo "The branch: ${{ steps.branch_name.outputs.branch_name }} was updated sucessfully"
+
+      - name: Run databricks job "TrainingModel"
+        env:
+          DATABRICKS_HOST: ${{ vars.DATABRICKS_HOST }}
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+          JOB_NAME: 'TrainingModel'
+          WAIT_TIMEOUT: '20m0s'
+        run: |
+          JOB_ID=$(databricks jobs list | grep -w $JOB_NAME | awk -F ' ' '{print $1}')
+          databricks jobs run-now $JOB_ID --timeout $WAIT_TIMEOUT
           
           
 
