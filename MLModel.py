@@ -6,8 +6,12 @@ spark = SparkSession.builder.appName("MlModel").getOrCreate()
 
 # MAGIC %run "./DataCreator"
 # MAGIC
-# MAGIC %run "./DataCleaning"
 # MAGIC
+# MAGIC
+
+# COMMAND ----------
+
+# MAGIC %run "./DataCleaning"
 
 # COMMAND ----------
 
@@ -24,7 +28,7 @@ from pyspark.ml.evaluation import BinaryClassificationEvaluator
 data_path = "/dbfs/tmp/cleaned_dataset.parquet"
 cleaned_data_df = spark.read.parquet(data_path)
 
-display(cleaned_data_df.limit(10))
+#display(cleaned_data_df.limit(10))
 
 # COMMAND ----------
 
