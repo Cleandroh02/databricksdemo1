@@ -52,7 +52,10 @@ jobs:
           REPO_PATH: ${{ inputs.databricksRepoPath }}
           BRANCH: ${{ inputs.branch }}
         run: |
-          databricks repos update $REPO_PATH --branch $BRANCH
+          echo "!!!!!BRANCH NEW WAY!!!!!!!!!!!!!!!!: $BRANCH"
+          databricks repos update $REPO_PATH --branch ${{ steps.branch_name.outputs.branch_name }}
+          
+          
 
       
 
