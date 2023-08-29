@@ -53,7 +53,7 @@ jobs:
           BRANCH: ${{ inputs.branch }}
         run: |
           echo "!!!!!BRANCH NEW WAY!!!!!!!!!!!!!!!!: $BRANCH"
-          databricks repos update $REPO_PATH --branch ${{ steps.branch_name.outputs.branch_name }}
+          databricks repos update /Repos/cesar.higuita@dataknow.co/databricksdemo1 --branch ${{ steps.branch_name.outputs.branch_name }}
           
           
 
