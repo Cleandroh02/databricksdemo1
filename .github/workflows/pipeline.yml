@@ -1,7 +1,7 @@
 name: databricks-cicd
 on:
     push:
-      branches: ["fea"]
+      branches: ["fea*"]
     pull_request:
         branches: ["main", "dev"]
 
@@ -44,5 +44,16 @@ jobs:
 
           echo "branch_name=$branch_name" >> $GITHUB_OUTPUT
           echo "!!!!!Lowercase branch name working!!!!!!!!!!!!!: $branch_name"
+
+      - name: Update Branch at Workspace
+        env:
+          DATABRICKS_HOST: ${{ vars.DATABRICKS_HOST }}
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+          REPO_PATH: ${{ inputs.databricksRepoPath }}
+          BRANCH: ${{ inputs.branch }}
+        run: |
+          databricks repos update $REPO_PATH --branch $BRANCH
+
+      
 
         
